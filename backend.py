@@ -9,9 +9,9 @@ import pickle
 
 tf.config.set_visible_devices([], 'GPU')
 
-model = keras.models.load_model('model.h5')
+model = keras.models.load_model('model_data/model.h5')
 
-with open('corpus.pickle', 'rb') as corpus:
+with open('model_data/corpus.pickle', 'rb') as corpus:
     word_index, index_word = pickle.load(corpus)
 
 url = "https://tfhub.dev/google/universal-sentence-encoder-large/5"
