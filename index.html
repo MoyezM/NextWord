@@ -1,0 +1,53 @@
+<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+
+<div id="app">
+    <span>
+        <h1 class="centerText">
+            NextWord | Predict the next word of your text
+        </h1>
+       
+    </span>
+
+    <textarea v-model="predictText" v-on:keyup.enter="predict" placeholder="press enter to predict"></textarea>
+    <h5 class="centerText" v-html="nextWord"></h5>
+  </div>
+
+<script>
+    new Vue({
+    el: '#app',
+    data: {
+        predictText: '',
+        nextWord : '',
+  
+    },
+    methods: {
+        predict: function () {
+            var text = this.predictText.trim()
+            console.log(this.predictText)
+            if (text) {
+                this.predictText = ''
+                this.nextWord = text
+
+            }
+        }
+    }
+    })
+</script>
+
+<style>
+    textarea {
+        background: url(images/benice.png) center center no-repeat; /* This ruins default border */
+        border: 1px solid #888; 
+        outline: none;
+        resize: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        height: 50%;
+    }
+
+    .centerText {
+        text-align: center 
+    }
+</style>
