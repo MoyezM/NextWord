@@ -25,7 +25,7 @@
             var text = this.predictText.trim()
             if (text) {
                 console.log(text)
-                url = 'http://127.0.0.1:5000/predict?text=' + text
+                url = 'http://54.204.16.32/predict?text=' + text
                 fetch(url).then(response => response.text())
                 .then((body) => {
                     this.nextWord = text + ' | '+ body

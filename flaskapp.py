@@ -1,8 +1,12 @@
-from flask import Flask
-from flask import request
+from flask import Flask,  request,  current_app
 import requests 
 
 app = Flask(__name__)
+
+@app.route('/')
+def html():
+    return current_app.send_static_file('index.html')
+
 @app.route("/predict", methods = ['GET'])
 def predict():
     text = request.args.get('text')
