@@ -2,3 +2,5 @@
 .vscode/
 __pycache__/
 wiki_data.txt
+*.h5
+*.pickle

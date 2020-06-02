@@ -23,12 +23,17 @@
     methods: {
         predict: function () {
             var text = this.predictText.trim()
-            console.log(this.predictText)
             if (text) {
-                this.predictText = ''
-                this.nextWord = text
+                console.log(text)
+                url = 'http://127.0.0.1:5000/predict?text=' + text
+                fetch(url).then(response => response.text())
+                .then((body) => {
+                    this.nextWord = text + ' | '+ body
+                });
 
             }
+            this.predictText = ''
+
         }
     }
     })
