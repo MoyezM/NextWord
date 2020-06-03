@@ -9,7 +9,7 @@ import pickle
 
 tf.config.set_visible_devices([], 'GPU')
 
-model = keras.models.load_model('model_data/model.h5')
+model = keras.models.load_model('model_data/model.h5',custom_objects={'KerasLayer':hub.KerasLayer})
 
 with open('model_data/corpus.pickle', 'rb') as corpus:
     word_index, index_word = pickle.load(corpus)
@@ -24,9 +24,7 @@ CORS(app)
 def predict():
     text = request.args.get('text')
 
-    embedding = embed([text])
-    
-    pred = model.predict(embedding)
+    pred = model.predict([text])
     
     idx = np.argmax(pred)
     
